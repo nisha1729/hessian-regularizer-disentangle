@@ -1,0 +1,35 @@
+
+DATASET: 'mnist_cnn'
+FILENAME: 'mnist_cnn_hybrid_docs'
+
+MODEL:
+  C: 2                   # number of output labels in the dataset
+  MISC: 1                 # number of dim in latent space common for all classes
+  EMBED_DIM: 5           # latent dimension
+
+TRAIN:
+  N_EPOCHS: 20           # number of epochs
+  REG_EPOCH: 1           # epoch from where reg is added
+  BATCH_SIZE: 1 
+  LR: 0.01               # [0.09, 0.095, 0.001, 0.0015, 0.002]
+
+TEST:
+  BATCH_SIZE: 16 
+  EPOCH: 19
+
+
+REG:
+  METHOD: 'autograd'     # method to calculate hessian
+  WRT: 'autoencoder'      # hessian wrt autoencoder/classifier/both loss(es)
+  ALPHA_off_diag: 0.5    # [1e10, 1e15, 1e20]  # 0.005  # off-diagonal terms
+  ALPHA_diag: 1        # [[1e10, 1e11, 1e15], [1e15, 1e16, 1e20], [1e20, 1e21, 1e25]]  # 0.005   # diagonal terms
+  ALPHA_ae: 2            # reconstruction loss weight
+  ALPHA_cl: 0.5          # classification loss weight
+  ALPHA_reg: 1           # beta: reg weight
+  MASK_OTHER: 0          # DO NOT FLIP # mask for other classes
+  MASK_CLASS: 1          # DO NOT FLIP # mask for current class
+  EPS: 0.01
+
+# Set random seed for reproducibility
+SEED: 3407
+DTYPE: torch.float32

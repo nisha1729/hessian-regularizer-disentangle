@@ -1,0 +1,36 @@
+
+DATASET: 'celeba'
+FILENAME: 'celeba_with_hessian'
+
+MODEL:
+  C: 1                   # number of output labels in the dataset
+  MISC: 0                # number of dim in latent space common for all classes
+  EMBED_DIM: 10           # latent dimension
+  IN_CHANNELS: 3
+
+TRAIN:
+  N_EPOCHS:  100           # number of epochs
+  REG_EPOCH: 1         # epoch from where reg is added
+  BATCH_SIZE: 64
+  LR: 0.0001              # [0.09, 0.095, 0.001, 0.0015, 0.002]
+
+TEST:
+  BATCH_SIZE: 64
+  EPOCH: 40
+
+
+REG:
+  METHOD: 'autograd'     # method to calculate hessian
+  WRT: 'autoencoder'     # hessian wrt autoencoder/classifier/both loss(es)
+  ALPHA_off_diag: 0.5    # [1e10, 1e15, 1e20]  # 0.005  # off-diagonal terms
+  ALPHA_diag: 0.5        # [[1e10, 1e11, 1e15], [1e15, 1e16, 1e20], [1e20, 1e21, 1e25]]  # 0.005   # diagonal terms
+  ALPHA_ae: 2            # reconstruction loss weight
+  ALPHA_cl: 0          # classification loss weight
+  ALPHA_reg: 5           # beta: reg weight
+  MASK_OTHER: 0          # DO NOT FLIP # mask for other classes
+  MASK_CLASS: 1          # DO NOT FLIP # mask for current class
+  EPS: 0.01
+
+# Set random seed for reproducibility
+SEED: 3407
+DTYPE: torch.float32
