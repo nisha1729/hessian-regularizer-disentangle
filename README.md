@@ -24,7 +24,7 @@ in, what we call, an _entangled representation_. For better adversarial robustne
 and interpretability, it is desirable to have the features disentangled. Disentanglement focuses
 on achieving more structure in the latent space.
 There are multiple definitions for disentanglement:
-- According to [Bengio et al. [2012]](https://arxiv.org/abs/1206.5538) disentanglement is separating out the "distinct but informative factors" of variation present in the data.
+- According to [Bengio et al. [2012]](https://arxiv.org/abs/1206.5538), disentanglement is separating out the "distinct but informative factors" of variation present in the data.
 - [Locatello et al. [2019]](https://arxiv.org/abs/1811.12359) defines a disentangled representation to be one where only one factor in the latent
 representation changes when one factor of variation changes.
 
