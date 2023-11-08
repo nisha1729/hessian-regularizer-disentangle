@@ -9,7 +9,7 @@ This repository contains my original work on a novel Hessian regularizer for dis
 - To train a model with HeRD: `python main.py --train --cfg "/path/to/config/file.yaml"`
 - To generate reconstructed images while sweeping the latent variables: `python main.py --sweep --cfg "/path/to/config/file.yaml`
 
-The model and datasets are defined in the config files. We use different models for different datasets. The regularizer is agnostic to the model architecture since it depends only on the loss.
+The model and datasets are defined in the config files under `"./configs/"`. We use different models for different datasets. The regularizer is independent of the model architecture since it depends only on the loss.
 
 
 This work contains two variants of HeRD:
